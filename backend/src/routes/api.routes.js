@@ -1,5 +1,5 @@
 import express from 'express';
-import { helloController } from '../controllers';
+import { helloController, registrationController } from '../controllers';
 
 const cors = require('cors');
 
@@ -9,5 +9,6 @@ router.use(cors());
 router.use(express.json());
 
 router.get('/hello', helloController.get);
+router.post('/registration', registrationController.post);
 
 export default router;
