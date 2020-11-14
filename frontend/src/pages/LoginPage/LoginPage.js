@@ -111,13 +111,12 @@ function Login() {
         <p className="logError">{passwordInput.error}</p>
 
         <div className="buttons">
-          <Link to="/register">
-            <Button variant="contained" color="secondary">
+          <Link to="/register" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" color="primary">
               Register
             </Button>
-
           </Link>
-          <Button onClick={loginClick} variant="contained" color="secondary">
+          <Button onClick={loginClick} variant="contained" color="primary">
             Sign in
           </Button>
         </div>

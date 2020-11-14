@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 
+import LandingPage from './pages/LandingPage/LandingPage';
 import StorePage from './pages/StorePage/StorePage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/store" component={StorePage} />
           <Route exact path="/register" component={RegistrationPage} />
           <Route exact path="/login" component={LoginPage} />
