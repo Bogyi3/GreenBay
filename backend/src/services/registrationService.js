@@ -103,14 +103,6 @@ export const registrationService = {
         status: 400,
       };
     }
-    const weakPasswordFormat = /^[a-z]+$/;
-    if (weakPasswordFormat.test(String(password))) {
-      throw {
-        message:
-          'Password too weak. Add at least one capital letter, number or symbol.',
-        status: 400,
-      };
-    }
   },
 
   async validateUser(username, firstName, lastName, email, password) {

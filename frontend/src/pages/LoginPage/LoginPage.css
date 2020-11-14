@@ -1,11 +1,11 @@
-.registrationPage {
+.loginPage {
   width: 100vw;
   display: flex;
   flex-flow: column;
   font-family: 'Alegreya', serif;
 }
 
-#registerForm {
+#loginForm {
   background-color: #e7ffe6;
   width: 100vw;
   padding: 1rem;
@@ -15,12 +15,12 @@
   min-height: 86vh;
 }
 
-#registerForm .fa-user-circle {
+.fa-unlock-alt {
   color: #49d290;
-  margin-top: 0.5rem;
+  margin: 2rem 0 0.5rem 0;
 }
 
-#registerForm h1 {
+#loginForm h1 {
   font-family: 'Lora', serif;
   font-size: 2rem;
   font-weight: 700;
@@ -28,11 +28,10 @@
   text-align: center;
 }
 
-#registerForm input {
+#loginForm input {
   width:90%;
   display: block;
   padding: 0.75rem;
-  margin: 0 auto;
   margin-top: 0.25rem;
   border: 1px solid  #ddd;
   border-radius: 0.25rem;
@@ -40,56 +39,52 @@
   color: #333333;
 }
 
-#registerForm input:focus {
+#loginForm input:focus {
   box-shadow: 0 0 5px #49d290; 
   border: 1px solid #49d290;
   outline-offset: 0px !important;
   outline: none !important;
 }
 
-#registerForm label {
+#loginForm label {
   width: 80%;
   display: block;
   text-align: left;
-  margin-top: 0.5rem;
-  color:  #333333;
+  color: #333333;
   font-weight: 700;
 }
 
-.strengthBar {
-  width: 80%;
-}
-
-.strengthWord {
-  font-family: 'Alegreya', serif;
-  font-weight: 700;
-  color:#333333 !important;
-}
-
-#registerForm label:first-of-type {
+#loginForm label:first-of-type {
   margin-top: 0;
 }
 
-.errorMessage {
+.logError {
   margin: 1rem;
   text-align: center;
   color: #b71c1c;
   font-weight: 700;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  width:90%;
+}
+
 @media (min-width: 600px) {
 
-  .registrationPage {
-    align-items: center;
+  .loginPage {
+    align-items: flex-end;
     justify-content: center;
   }
 
-  #registerForm {
+  #loginForm {
     width: 400px;
     border-radius: 3rem;
-    margin-top: 0.5rem;
+    margin-right: 10vw;
     box-shadow: 0.25rem 0 0.5rem #49d290; 
     border: 1px solid #49d290;
     min-height: fit-content;
+    padding-bottom: 2rem;
   }
 }

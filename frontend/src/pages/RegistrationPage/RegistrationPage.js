@@ -96,12 +96,6 @@ function RegistrationPage() {
       setErrorMessage('Password is too short. Minimum 6 characters.');
       return null;
     }
-
-    const weakPasswordFormat = /^[a-z]+$/;
-    if (weakPasswordFormat.test(String(password))) {
-      setErrorMessage('Password is too weak. Try adding numbers or special characters.');
-      return null;
-    }
     return registerUser();
   };
 
