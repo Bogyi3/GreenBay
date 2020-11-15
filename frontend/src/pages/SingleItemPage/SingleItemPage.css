@@ -1,0 +1,23 @@
+.singleItemPage {
+  padding: 1rem;
+  gap: 1rem;
+  width: 100vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+
+@media (min-width: 600px) {
+  
+
+  
+}
+
+@media (min-width: 960px) {
+
+  .storePage {
+    padding-top: 3rem;
+    width: 80vw;
+  }
+}
