@@ -1,10 +1,11 @@
 import express from 'express';
 import {
-  helloController,
   registrationController,
   sessionsController,
   itemsController,
 } from '../controllers';
+
+import authHandler from '../middlewares/auth-handler';
 
 const cors = require('cors');
 
@@ -13,9 +14,9 @@ const router = express.Router();
 router.use(cors());
 router.use(express.json());
 
-router.get('/hello', helloController.get);
 router.post('/registration', registrationController.post);
 router.post('/sessions', sessionsController.post);
+router.use(authHandler);
 
 router.get('/item/all', itemsController.getAllItems);
 router.get('/item/sellable/all', itemsController.getAllSellableItems);
