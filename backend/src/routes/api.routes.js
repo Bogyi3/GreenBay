@@ -18,10 +18,10 @@ router.post('/registration', registrationController.post);
 router.post('/sessions', sessionsController.post);
 router.post('/item/new', itemsController.createItem);
 router.get('/item/sellable/all', itemsController.getAllSellableItems);
+router.get('/item/:itemId', itemsController.getSingleItem);
 
 router.use(authHandler);
 
 router.get('/item/all', itemsController.getAllItems);
-router.get('/item/:itemId', itemsController.getSingleItem);
 
 export default router;

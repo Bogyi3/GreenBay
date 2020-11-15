@@ -1,13 +1,39 @@
-import { SELECT_ITEM } from '../actions/types';
+import {
+  LOADING_SINGLE_ITEM,
+  FETCH_SINGLE_ITEM_SUCCESS,
+  FETCH_SINGLE_ITEM_FAIL,
+} from '../actions/types';
 
 const initialState = {
-  selectedItem: '',
+  loading: false,
+  errorMessage: '',
+  selectedItem: {},
 };
 
 const selectItemReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SELECT_ITEM:
-      return action.payload;
+    case LOADING_SINGLE_ITEM:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case FETCH_SINGLE_ITEM_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        selectedItem: action.payload[0],
+        errorMessage: '',
+      };
+
+    case FETCH_SINGLE_ITEM_FAIL:
+      return {
+        ...state,
+        loading: false,
+        selectedItem: {},
+        errorMessage: action.payload.error,
+      };
+
     default: return state;
   }
 };
