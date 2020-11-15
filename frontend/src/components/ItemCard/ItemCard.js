@@ -6,11 +6,14 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '90vw',
-    display: 'flex',
     padding: '1rem',
+    display: 'flex',
+    [theme.breakpoints.up('sm')]: {
+      width: '100%',
+    },
   },
   imgContainer: {
     display: 'flex',
@@ -18,6 +21,8 @@ const useStyles = makeStyles({
     width: '45vw',
     justifyContent: 'center',
     alignItems: 'center',
+    border: '1px solid #49d290',
+    borderRadius: '0.25rem',
   },
   cardMedia: {
     objectFit: 'contain',
@@ -43,7 +48,7 @@ const useStyles = makeStyles({
     width: '100%',
     justifyContent: 'flex-end',
   },
-});
+}));
 
 function ItemCard({ itemImg, itemName, price }) {
   const classes = useStyles();

@@ -26,10 +26,12 @@ export const getSellable = (token) => async (dispatch) => {
     if (data.response.results) {
       return dispatch(fetchSellableAction(data.response.results));
     }
-
-    throw new Error(data.message || 'Something went wrong');
+    if (data.response.message === 'jwt malformed') {
+      throw new Error('Please sign in or register to continue.');
+    }
+    throw new Error(data.response.message || 'Something went wrong');
   } catch (err) {
-    dispatch(fetchSellableFailAction({ error: `There was an error: ${err.message}. Please try again!` }));
+    dispatch(fetchSellableFailAction({ error: `There was an error: ${err.message}` }));
     return null;
   }
 };

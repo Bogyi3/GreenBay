@@ -16,10 +16,8 @@ function StorePage() {
 
   return (
     <div className="storePage page">
-
-      Store Page
       {!itemsData.sellableList || itemsData.errorMessage
-        ? <div className="userErrorMessage">{itemsData.errorMessage || 'Fetching data...'}</div>
+        ? <div className="userErrorMessage">{itemsData.errorMessage || 'Something went wrong. Please try again later.'}</div>
         : itemsData.sellableList.map((item) => (
           <ItemCard
             key={item.id}
