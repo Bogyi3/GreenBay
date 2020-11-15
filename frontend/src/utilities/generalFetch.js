@@ -1,4 +1,4 @@
-async function generalFetch(endpoint, method, bodyData = undefined) {
+async function generalFetch(endpoint, method, bodyData = undefined, token = undefined) {
   const requestOptions = {
     method,
     headers: {
@@ -8,7 +8,6 @@ async function generalFetch(endpoint, method, bodyData = undefined) {
   };
 
   if (endpoint !== 'sessions' && endpoint !== 'registration') {
-    const token = localStorage.getItem('token');
     requestOptions.headers.Authorization = `Bearer ${token}`;
   }
 

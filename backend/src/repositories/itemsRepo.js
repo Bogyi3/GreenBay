@@ -8,7 +8,7 @@ export const itemsRepo = {
   },
 
   async getAllSellableItems() {
-    const sql = 'SELECT id, item_name as itemName, item_img as itemImg, price, description, seller FROM items WHERE buyer=NULL';
+    const sql = 'SELECT id, item_name as itemName, item_img as itemImg, price, description, seller FROM items WHERE buyer IS NULL';
     return await db.query(sql, []);
   },
 
