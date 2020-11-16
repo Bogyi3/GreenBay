@@ -7,17 +7,16 @@
   align-items: center;
 }
 
-
-@media (min-width: 600px) {
-  
-
-  
+.singleItemErrorMessage {
+  font-family: 'Alegreya', serif;
+  margin: 1rem;
+  text-align: center;
+  color: #b71c1c;
+  font-weight: 700;
 }
 
-@media (min-width: 960px) {
-
-  .storePage {
-    padding-top: 3rem;
-    width: 80vw;
+@media (min-width: 600px) {
+  .singleItemErrorMessage {
+    margin-top: 3rem;
   }
 }

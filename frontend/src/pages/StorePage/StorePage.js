@@ -8,7 +8,6 @@ import './StorePage.css';
 function StorePage() {
   const itemsData = useSelector((state) => state.sellable);
   const token = useSelector((state) => state.login.token);
-  //  const selectedItem = useSelector((state) => state.selectedItem);
   const dispatch = useDispatch();
 
   useEffect(() => {

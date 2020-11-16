@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '1rem',
     display: 'flex',
     flexFlow: 'column',
-    alignItems: 'center',
     color: '#333333',
   },
   nameAndPrice: {

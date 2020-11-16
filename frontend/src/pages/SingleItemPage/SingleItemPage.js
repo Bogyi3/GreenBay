@@ -1,18 +1,27 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ItemCardDetailed from '../../components/ItemCardDetailed/ItemCardDetailed';
 import './SingleItemPage.css';
 
 function SingleItemPage() {
+  const selected = useSelector((state) => state.selectedItem.selectedItem);
+  const errorMessage = useSelector((state) => state.selectedItem.errorMessage);
+
   return (
     <div className="singleItemPage page">
-      <ItemCardDetailed
-        itemName="MyItemName"
-        price="56"
-        description="awesome item, high quality, excellent condition, blah blah blah"
-        itemImg="https://images-na.ssl-images-amazon.com/images/I/81gx3hw9EEL.jpg"
-        seller="Mazsi"
-        buyer="Bogi"
-      />
+      {!selected.itemName || errorMessage
+        ? <div className="singleItemErrorMessage">{ errorMessage || 'Something went wrong. Please try again later.'}</div>
+        : (
+          <ItemCardDetailed
+            itemName={selected.itemName}
+            price={selected.price}
+            description={selected.description}
+            itemImg={selected.itemImg}
+            seller={selected.seller}
+            buyer={selected.buyer}
+          />
+        )}
+
     </div>
   );
 }

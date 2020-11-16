@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -59,10 +60,12 @@ function ItemCard({
   const dispatch = useDispatch();
   const classes = useStyles();
   const token = useSelector((state) => state.login.token);
+  const history = useHistory();
 
   useEffect(() => {
     if (selectedId !== '') {
       dispatch(getSingle(selectedId, token));
+      history.push('/singleItem');
     }
   }, [selectedId, dispatch, token]);
 
