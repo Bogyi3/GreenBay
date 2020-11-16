@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 import ItemCardDetailed from '../../components/ItemCardDetailed/ItemCardDetailed';
 import './SingleItemPage.css';
 
@@ -12,14 +14,21 @@ function SingleItemPage() {
       {!selected.itemName || errorMessage
         ? <div className="singleItemErrorMessage">{ errorMessage || 'Something went wrong. Please try again later.'}</div>
         : (
-          <ItemCardDetailed
-            itemName={selected.itemName}
-            price={selected.price}
-            description={selected.description}
-            itemImg={selected.itemImg}
-            seller={selected.seller}
-            buyer={selected.buyer}
-          />
+          <div className="itemAndButtonContainer">
+            <ItemCardDetailed
+              itemName={selected.itemName}
+              price={selected.price}
+              description={selected.description}
+              itemImg={selected.itemImg}
+              seller={selected.seller}
+              buyer={selected.buyer}
+            />
+            <Link to="/store" style={{ textDecoration: 'none' }}>
+              <Button variant="outlined" color="primary">
+                BACK TO STORE
+              </Button>
+            </Link>
+          </div>
         )}
 
     </div>

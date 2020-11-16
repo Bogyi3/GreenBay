@@ -7,6 +7,13 @@
   align-items: center;
 }
 
+.itemAndButtonContainer {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .singleItemErrorMessage {
   font-family: 'Alegreya', serif;
   margin: 1rem;

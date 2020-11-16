@@ -3,12 +3,12 @@ import { db } from '../data/connection';
 export const itemsRepo = {
 
   async getAllItems() {
-    const sql = 'SELECT id, item_name as itemName, item_img as itemImg, price, description, seller, buyer FROM items';
+    const sql = 'SELECT id, item_name as itemName, item_img as itemImg, price, description, seller, buyer FROM items ORDER BY id DESC';
     return await db.query(sql, []);
   },
 
   async getAllSellableItems() {
-    const sql = 'SELECT id, item_name as itemName, item_img as itemImg, price, description, seller FROM items WHERE buyer IS NULL';
+    const sql = 'SELECT id, item_name as itemName, item_img as itemImg, price, description, seller FROM items WHERE buyer IS NULL ORDER BY id DESC';
     return await db.query(sql, []);
   },
 

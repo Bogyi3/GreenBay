@@ -74,14 +74,13 @@
 @media (min-width: 600px) {
 
   .loginPage {
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
   }
 
   #loginForm {
     width: 400px;
     border-radius: 3rem;
-    margin-right: 10vw;
     box-shadow: 0.25rem 0 0.5rem #49d290; 
     border: 1px solid #49d290;
     min-height: fit-content;
