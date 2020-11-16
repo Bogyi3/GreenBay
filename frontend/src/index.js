@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { ThemeProvider } from '@material-ui/core';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import theme from './theme';
-import store from './store';
+import { store, persistor } from './store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -12,7 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>,
