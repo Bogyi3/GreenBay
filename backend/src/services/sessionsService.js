@@ -6,7 +6,7 @@ import config from '../config';
 export const sessionsService = {
 
   generateAccessToken({ id, username, userType }) {
-    return jwt.sign({ id, username, userType }, config.secret, { expiresIn: '1800000s' });
+    return jwt.sign({ id, username, userType }, config.secret, { expiresIn: '1800000' });
   },
 
   async getToken(username, password) {

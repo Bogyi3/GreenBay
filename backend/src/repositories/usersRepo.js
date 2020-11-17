@@ -29,4 +29,16 @@ export const usersRepo = {
     const sql = 'SELECT id, username, first_name as firstName, last_name as lastName, email, user_type as userType, profile_img as profileImg, money FROM users;';
     return await db.query(sql, []);
   },
+  async checkIfEnoughMoney(buyer, price) {
+    const sql = 'SELECT id, username FROM users WHERE username=? AND money > ?';
+    return await db.query(sql, [buyer, price]);
+  },
+  async subtractPrice(buyer, price) {
+    const sql = 'UPDATE users SET money = money - ? WHERE username=?';
+    return await db.query(sql, [price, buyer]);
+  },
+  async addPrice(seller, price) {
+    const sql = 'UPDATE users SET money = money + ? WHERE username=?';
+    return await db.query(sql, [price, seller]);
+  },
 };
