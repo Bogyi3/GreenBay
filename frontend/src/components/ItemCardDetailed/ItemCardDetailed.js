@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import generalFetch from '../../utilities/generalFetch';
+import { getSingle } from '../../actions/selectItemAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,12 +81,44 @@ function ItemCardDetailed({
   price,
   description,
   seller,
+  id = undefined,
   buyer = undefined,
 }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [buyId, setBuyId] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const token = useSelector((state) => state.login.token);
+  const username = useSelector((state) => state.login.username);
+
+  useEffect(() => {
+    if (buyId !== '') {
+      // eslint-disable-next-line no-shadow
+      const buyItem = async (buyId, username) => {
+        try {
+          const boughtItemData = await generalFetch('transaction', 'PUT', {
+            itemId: buyId,
+            buyer: username,
+          }, token);
+          if (boughtItemData.response.message) {
+            setErrorMessage(boughtItemData.response.message);
+          }
+          if (boughtItemData.status === 200) {
+            dispatch(getSingle(buyId, token));
+          }
+          return boughtItemData;
+        } catch (error) {
+          setErrorMessage(error.message);
+          return null;
+        }
+      };
+      buyItem(buyId, username);
+    }
+  }, [buyId]);
 
   return (
     <Card className={classes.root}>
+      <div className="errorMessage">{errorMessage}</div>
       <div className={classes.imgContainer}>
         <CardMedia
           className={classes.cardMedia}
@@ -109,7 +144,7 @@ function ItemCardDetailed({
           <Typography className={classes.seller}>
             {`Seller: ${seller}`}
           </Typography>
-          {!buyer && <Button size="medium" variant="contained" color="primary">BUY ITEM</Button>}
+          {!buyer && <Button onClick={() => { setBuyId(id); }} id={id} size="medium" variant="contained" color="primary">BUY ITEM</Button>}
           {buyer && <Typography className={classes.buyer}>{`Buyer: ${buyer}`}</Typography>}
         </div>
       </div>
@@ -121,6 +156,8 @@ ItemCardDetailed.propTypes = {
   itemName: PropTypes.string.isRequired,
   itemImg: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  description: PropTypes.number.isRequired,
+  seller: PropTypes.number.isRequired,
 };
 
 export default ItemCardDetailed;

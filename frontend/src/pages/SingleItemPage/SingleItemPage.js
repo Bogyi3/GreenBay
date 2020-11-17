@@ -22,6 +22,7 @@ function SingleItemPage() {
               description={selected.description}
               itemImg={selected.itemImg}
               seller={selected.seller}
+              id={selected.id}
               buyer={selected.buyer}
             />
             <Link to="/store" style={{ textDecoration: 'none' }}>
