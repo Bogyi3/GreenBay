@@ -27,9 +27,16 @@
 .navBarLogos {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   width: 100%;
   height: 7vh;
+}
+
+.money {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0 1rem;
+  color: #FFFFFF;
 }
 
 .navBar .fa-user-circle, .navBar .fa-store, .navBar .fa-shopping-cart, .navBar .fa-plus-circle {
@@ -85,7 +92,7 @@
   .navBarUserMenu {
     width: 10rem;
     position: absolute;
-    right: 0rem
+    right: 4.5rem
   }
 
 }

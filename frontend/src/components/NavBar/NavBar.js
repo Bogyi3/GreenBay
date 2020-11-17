@@ -23,9 +23,12 @@ function NavBar() {
           <h1>GreenBay</h1>
         </div>
         <div className="navBarLogos">
-          {loginData.username && (<Link to="/newItem" style={{ textDecoration: 'none' }}><i onClick={() => setOpen(false)} className="fas fa-plus-circle fa-lg" /></Link>)}
-          {loginData.username && (<Link to="/store" style={{ textDecoration: 'none' }}><i onClick={() => setOpen(false)} className="fas fa-store fa-lg" /></Link>)}
+          {loginData.money && (<h2 className="money">{`$${loginData.money}`}</h2>)}
           <i onClick={() => setOpen(!open)} className="fas fa-user-circle fa-lg" />
+          {loginData.username && (<Link to="/newItem" style={{ textDecoration: 'none' }}><i onClick={() => setOpen(false)} className="fas fa-plus-circle fa-lg" /></Link>)}
+          {!loginData.username && (<i onClick={() => setOpen(false)} className="fas fa-plus-circle fa-lg" />)}
+          {loginData.username && (<Link to="/store" style={{ textDecoration: 'none' }}><i onClick={() => setOpen(false)} className="fas fa-store fa-lg" /></Link>)}
+          {!loginData.username && (<i onClick={() => setOpen(false)} className="fas fa-store fa-lg" />)}
         </div>
       </div>
       <div className="navBarUserMenu" style={{ display: open ? 'flex' : 'none' }}>

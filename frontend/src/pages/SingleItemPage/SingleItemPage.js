@@ -7,12 +7,13 @@ import './SingleItemPage.css';
 
 function SingleItemPage() {
   const selected = useSelector((state) => state.selectedItem.selectedItem);
+  const token = useSelector((state) => state.login.token);
   const errorMessage = useSelector((state) => state.selectedItem.errorMessage);
 
   return (
     <div className="singleItemPage page">
-      {!selected.itemName || errorMessage
-        ? <div className="singleItemErrorMessage">{ errorMessage || 'Something went wrong. Please try again later.'}</div>
+      {!selected.itemName || !token || errorMessage
+        ? <div className="singleItemErrorMessage">{ errorMessage || 'Something went wrong. Please, sign in or try again later.'}</div>
         : (
           <div className="itemAndButtonContainer">
             <ItemCardDetailed
