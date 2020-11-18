@@ -4,15 +4,19 @@ import ItemCard from '../../components/ItemCard/ItemCard';
 import { getSellable } from '../../actions/listSellableActions';
 
 import './StorePage.css';
+import { getUserData } from '../../actions/userDataAction';
 
 function StorePage() {
   const itemsData = useSelector((state) => state.sellable);
   const token = useSelector((state) => state.login.token);
+  const username = useSelector((state) => state.login.username);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSellable(token));
-  }, [dispatch, token]);
+    dispatch(getUserData(username, token));
+  }, [dispatch, token, username]);
 
   return (
     <div className="storePage page">

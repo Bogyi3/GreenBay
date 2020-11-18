@@ -9,6 +9,7 @@ import './NavBar.css';
 function NavBar() {
   const [open, setOpen] = useState(false);
   const loginData = useSelector((state) => state.login);
+  const money = useSelector((state) => state.userData.userData.money);
   const dispatch = useDispatch();
 
   function logout() {
@@ -23,7 +24,7 @@ function NavBar() {
           <h1>GreenBay</h1>
         </div>
         <div className="navBarLogos">
-          {loginData.money && (<h2 className="money">{`$${loginData.money}`}</h2>)}
+          {money && (<h2 className="money">{`$${money}`}</h2>)}
           <i onClick={() => setOpen(!open)} className="fas fa-user-circle fa-lg" />
           {loginData.username && (<Link to="/newItem" style={{ textDecoration: 'none' }}><i onClick={() => setOpen(false)} className="fas fa-plus-circle fa-lg" /></Link>)}
           {!loginData.username && (<i onClick={() => setOpen(false)} className="fas fa-plus-circle fa-lg" />)}

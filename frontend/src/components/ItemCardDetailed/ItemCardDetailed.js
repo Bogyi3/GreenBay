@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import generalFetch from '../../utilities/generalFetch';
 import { getSingle } from '../../actions/selectItemAction';
+import { getUserData } from '../../actions/userDataAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,6 +107,7 @@ function ItemCardDetailed({
           }
           if (boughtItemData.status === 200) {
             dispatch(getSingle(buyId, token));
+            dispatch(getUserData(username, token));
           }
           return boughtItemData;
         } catch (error) {
@@ -114,7 +117,7 @@ function ItemCardDetailed({
       };
       buyItem(buyId, username);
     }
-  }, [buyId]);
+  }, [buyId, token, username, dispatch]);
 
   return (
     <Card className={classes.root}>
@@ -144,7 +147,8 @@ function ItemCardDetailed({
           <Typography className={classes.seller}>
             {`Seller: ${seller}`}
           </Typography>
-          {!buyer && <Button onClick={() => { setBuyId(id); }} id={id} size="medium" variant="contained" color="primary">BUY ITEM</Button>}
+          {!buyer && !id && <Button size="medium" variant="contained" color="primary">BUY ITEM</Button>}
+          {!buyer || id && <Button onClick={() => { setBuyId(id); }} id={id} size="medium" variant="contained" color="primary">BUY ITEM</Button>}
           {buyer && <Typography className={classes.buyer}>{`Buyer: ${buyer}`}</Typography>}
         </div>
       </div>
@@ -156,8 +160,8 @@ ItemCardDetailed.propTypes = {
   itemName: PropTypes.string.isRequired,
   itemImg: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  description: PropTypes.number.isRequired,
-  seller: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  seller: PropTypes.string.isRequired,
 };
 
 export default ItemCardDetailed;

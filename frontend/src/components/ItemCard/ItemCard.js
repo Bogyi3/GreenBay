@@ -67,7 +67,7 @@ function ItemCard({
       dispatch(getSingle(selectedId, token));
       history.push('/singleItem');
     }
-  }, [selectedId, dispatch, token]);
+  }, [selectedId, dispatch, token, history]);
 
   return (
     <div className="itemCard">

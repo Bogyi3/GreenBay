@@ -207,7 +207,7 @@ function CreateItemPage() {
         <Fade in={open}>
           <ItemCardDetailed
             itemName={itemNameInput}
-            price={priceInput}
+            price={parseInt(priceInput, 10)}
             description={descriptionInput}
             itemImg={itemImgInput}
             seller={username}
