@@ -34,7 +34,7 @@ export const itemsController = {
     try {
       const { itemParams } = req.body;
       const response = await itemsService.createItem(itemParams);
-      res.status(200).json(response);
+      res.status(201).json(response);
     } catch (error) {
       next(error);
     }
