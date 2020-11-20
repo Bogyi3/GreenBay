@@ -108,12 +108,14 @@ function CreateItemPage() {
     const numsOnly = /^\d+$/;
     if (!numsOnly.test(priceInput) || priceInput < 1) {
       setErrorMessage('The price must be a positive integer.');
+      return null;
     }
 
     // eslint-disable-next-line no-useless-escape
     const validUrl = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
     if (!validUrl.test(itemImgInput)) {
       setErrorMessage('You must enter a valid url.');
+      return null;
     }
     return createItem();
   };
