@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-mixed-operators */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -147,9 +148,11 @@ function ItemCardDetailed({
           <Typography className={classes.seller}>
             {`Seller: ${seller}`}
           </Typography>
-          {!buyer && !id && <Button size="medium" variant="contained" color="primary">BUY ITEM</Button>}
-          {!buyer || id && <Button onClick={() => { setBuyId(id); }} id={id} size="medium" variant="contained" color="primary">BUY ITEM</Button>}
-          {buyer && <Typography className={classes.buyer}>{`Buyer: ${buyer}`}</Typography>}
+          {!buyer && !id
+            ? <Button size="medium" variant="contained" color="primary">BUY ITEM</Button>
+            : buyer && id
+              ? <Typography className={classes.buyer}>{`Buyer: ${buyer}`}</Typography>
+              : <Button onClick={() => { setBuyId(id); }} id={id} size="medium" variant="contained" color="primary">BUY ITEM</Button>}
         </div>
       </div>
     </Card>
